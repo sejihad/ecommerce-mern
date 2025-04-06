@@ -2,7 +2,7 @@ import { CheckCircle } from "@mui/icons-material";
 import { Box, Button, Paper, Typography } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
-import "./OrderSuccess.css";
+import "./orderSuccess.css";
 
 const OrderSuccess = () => {
   return (
