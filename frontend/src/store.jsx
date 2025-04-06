@@ -1,5 +1,5 @@
+import { composeWithDevTools } from "@redux-devtools/extension";
 import { applyMiddleware, combineReducers, createStore } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // LocalStorage use korar jonno
 import { thunk } from "redux-thunk"; // ✅ Named import
