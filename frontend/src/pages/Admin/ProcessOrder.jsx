@@ -1,3 +1,4 @@
+import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import {
   Box,
   Button,
@@ -7,8 +8,7 @@ import {
   Paper,
   Select,
   Typography,
-} from "@material-ui/core";
-import AccountTreeIcon from "@material-ui/icons/AccountTree";
+} from "@mui/material";
 import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";

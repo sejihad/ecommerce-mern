@@ -6,7 +6,7 @@ import { clearErrors, myOrders } from "../../actions/orderAction";
 import Loader from "../../component/layout/Loader/Loader.jsx";
 import "./myOrders.css";
 
-import LaunchIcon from "@material-ui/icons/Launch";
+import LaunchIcon from "@mui/icons-material/Launch";
 import Typography from "@mui/material/Typography";
 import { toast } from "react-toastify";
 import MetaData from "../../component/layout/MetaData.jsx";
