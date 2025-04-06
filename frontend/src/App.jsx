@@ -66,7 +66,7 @@ function App() {
   useEffect(() => {
     getStripeApiKey();
   }, []);
-  window.addEventListener("contextmenu", (e) => e.preventDefault());
+
   return (
     <BrowserRouter>
       <Header />
