@@ -34,7 +34,7 @@ import ProductDetails from "./pages/Product/ProductDetails.jsx";
 import Products from "./pages/Product/Products.jsx";
 import Search from "./pages/Product/Search.jsx";
 import ForgotPassword from "./pages/User/ForgotPassword.jsx";
-import LoginSignUp from "./pages/User/LoginSignup.jsx";
+import LoginSignUp from "./pages/User/LoginSignUp.jsx";
 import Profile from "./pages/User/Profile.jsx";
 import ResetPassword from "./pages/User/ResetPassword.jsx";
 import UpdatePassword from "./pages/User/UpdatePassword.jsx";
