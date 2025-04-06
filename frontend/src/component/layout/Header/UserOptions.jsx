@@ -86,11 +86,11 @@ const UserOptions = ({ user }) => {
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         open={open}
-        direction={isMobile ? "up" : "down"}
+        direction={isMobile ? "up" : "up"}
         sx={{
           position: "fixed",
-          bottom: isMobile ? 16 : "auto",
-          top: isMobile ? "auto" : 16,
+          bottom: 16,
+
           right: 16,
           zIndex: (theme) => theme.zIndex.speedDial,
           "& .MuiSpeedDial-fab": {
