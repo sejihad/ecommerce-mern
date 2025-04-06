@@ -1,0 +1,146 @@
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.7)
+    ),
+    url("https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80");
+  background-size: cover;
+  background-position: center;
+  padding: 2rem;
+  margin-top: 79px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 450px;
+  padding: 2.5rem;
+  border-radius: 16px !important;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+}
+
+.auth-tabs {
+  margin-bottom: 2rem;
+}
+
+.auth-tabs .MuiTab-root {
+  font-weight: 600;
+  text-transform: none;
+  font-size: 1rem;
+}
+
+.auth-tabs .Mui-selected {
+  color: #3a7bd5 !important;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.auth-input .MuiOutlinedInput-root {
+  border-radius: 12px;
+}
+
+.auth-input .MuiOutlinedInput-input {
+  padding: 14px 14px 14px 0;
+}
+
+.avatar-upload {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.avatar-preview {
+  width: 100px !important;
+  height: 100px !important;
+  border: 3px solid #e0e0e0;
+}
+
+.camera-icon {
+  position: absolute;
+  bottom: 5px;
+  right: 35%;
+  background: #3a7bd5;
+  color: white !important;
+  padding: 5px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.forgot-password {
+  text-align: right;
+  margin-top: -0.5rem;
+}
+
+.forgot-password a {
+  color: #666;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.forgot-password a:hover {
+  color: #3a7bd5;
+}
+
+.auth-button {
+  padding: 12px !important;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  text-transform: none !important;
+  background: linear-gradient(45deg, #3a7bd5 0%, #00d2ff 100%) !important;
+  margin-top: 1rem !important;
+  transition: all 0.3s !important;
+}
+
+.auth-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(58, 123, 213, 0.3) !important;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .auth-card {
+    padding: 2rem;
+  }
+
+  .avatar-preview {
+    width: 80px !important;
+    height: 80px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-container {
+    padding: 1rem;
+  }
+
+  .auth-card {
+    padding: 1.5rem;
+  }
+
+  .auth-tabs .MuiTab-root {
+    font-size: 0.9rem;
+  }
+
+  .avatar-preview {
+    width: 70px !important;
+    height: 70px !important;
+  }
+
+  .auth-button {
+    padding: 10px !important;
+  }
+}

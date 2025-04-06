@@ -1,0 +1,114 @@
+/* myOrders.css */
+.my-orders-container {
+  width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  margin-top: 17px;
+}
+
+.my-orders-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
+  font-weight: 500;
+  padding: 0.8rem;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.orders-data-grid-container {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  height: calc(100vh - 200px);
+}
+
+.orders-data-grid {
+  border: none !important;
+}
+
+.orders-data-grid .MuiDataGrid-columnHeaders {
+  background-color: #1976d2;
+  color: white;
+}
+
+.orders-data-grid .MuiDataGrid-cell {
+  border-bottom: 1px solid rgba(224, 224, 224, 0.5);
+}
+
+.order-id-cell {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.order-action-link {
+  color: rgba(0, 0, 0, 0.54);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.order-action-link:hover {
+  color: #1976d2;
+}
+
+.greenColor {
+  color: green;
+}
+
+.redColor {
+  color: red;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 900px) {
+  .my-orders-container {
+    padding: 1rem;
+  }
+
+  .orders-data-grid-container {
+    height: auto;
+    min-height: 400px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .my-orders-container {
+    padding: 0.5rem;
+  }
+
+  .my-orders-title {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .orders-data-grid .MuiDataGrid-columnHeaderTitle {
+    font-size: 0.7rem;
+  }
+
+  .orders-data-grid .MuiDataGrid-cell {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .orders-data-grid .MuiDataGrid-columnHeaderTitle {
+    font-size: 0.6rem;
+  }
+
+  .orders-data-grid .MuiDataGrid-cell {
+    font-size: 0.7rem;
+  }
+}
+
+.css-16xl4zq-MuiTypography-root {
+  margin-top: 74px !important;
+}

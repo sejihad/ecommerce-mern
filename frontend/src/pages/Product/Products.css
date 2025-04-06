@@ -1,0 +1,292 @@
+/* Products Page Layout */
+.products-page {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  align-items: start;
+  margin-top: 76px;
+}
+
+/* Products Grid */
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+/* Product Card Styles */
+.product-card {
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid var(--light-gray);
+}
+
+.product-image-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-bottom: 2px solid var(--light-gray);
+  border-radius: 8px;
+}
+
+.product-details {
+  padding: 1rem;
+}
+
+.product-name {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-price {
+  font-size: 1.3rem;
+  margin-top: 0.5rem;
+}
+
+/* Sidebar for Filters */
+.products-sidebar {
+  background: var(--background-light);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .products {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 992px) {
+  .products-page {
+    grid-template-columns: 240px 1fr;
+    padding: 1.5rem;
+  }
+
+  .product-image-container {
+    height: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .products-page {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .products-sidebar {
+    position: static;
+    margin-bottom: 1.5rem;
+  }
+
+  .products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .product-card {
+    padding: 0.6rem;
+  }
+
+  .product-details {
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .products {
+    grid-template-columns: 1fr;
+  }
+
+  .product-image-container {
+    height: 160px;
+  }
+
+  .product-name {
+    font-size: 1rem;
+  }
+
+  .product-price {
+    font-size: 1.2rem;
+  }
+}
+
+/* Pagination Responsive */
+.paginationBox {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.page-item {
+  padding: 0.6rem 1rem;
+  margin: 0.3rem;
+}
+
+@media (max-width: 480px) {
+  .page-item {
+    padding: 0.5rem 0.8rem;
+  }
+}
+
+/* Pagination Container */
+.paginationBox {
+  display: flex;
+  justify-content: center;
+  margin: 3rem 0 2rem;
+  width: 100%;
+}
+
+/* Pagination List */
+.paginationBox ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Pagination Items */
+.paginationBox li {
+  margin: 0;
+}
+
+/* Page Items (Numbers, Next/Prev) */
+.page-item {
+  background-color: var(--white);
+  border: 1px solid var(--light-gray);
+  border-radius: 6px;
+  color: var(--text-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 500;
+  height: 40px;
+  min-width: 40px;
+  padding: 0 0.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.page-item:hover {
+  background-color: var(--primary-light);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+/* Active Page Item */
+.pageItemActive {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white !important;
+}
+
+/* Page Links */
+.page-link {
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: 0 0.5rem;
+}
+
+/* Active Page Link */
+.pageLinkActive {
+  color: white !important;
+}
+
+/* Navigation Items (Next/Prev/First/Last) */
+.paginationBox li:first-child .page-item,
+.paginationBox li:last-child .page-item,
+.paginationBox li:nth-child(2) .page-item,
+.paginationBox li:nth-last-child(2) .page-item {
+  padding: 0 1rem;
+  font-weight: 600;
+}
+
+/* Disabled Items */
+.paginationBox .disabled .page-item {
+  background-color: var(--light-gray);
+  color: var(--light-text);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.paginationBox .disabled .page-item:hover {
+  background-color: var(--light-gray);
+  border-color: var(--light-gray);
+  color: var(--light-text);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .paginationBox ul {
+    gap: 0.3rem;
+  }
+
+  .page-item {
+    height: 36px;
+    min-width: 36px;
+    font-size: 0.9rem;
+  }
+
+  .paginationBox li:first-child .page-item,
+  .paginationBox li:last-child .page-item,
+  .paginationBox li:nth-child(2) .page-item,
+  .paginationBox li:nth-last-child(2) .page-item {
+    padding: 0 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .paginationBox {
+    margin: 2rem 0;
+    padding: 0 0.5rem;
+  }
+
+  .page-item {
+    height: 32px;
+    min-width: 32px;
+    font-size: 0.85rem;
+  }
+
+  /* Hide some items on very small screens */
+  .paginationBox
+    li:not(.active):not(:first-child):not(:last-child):not(:nth-child(2)):not(
+      :nth-last-child(2)
+    ) {
+    display: none;
+  }
+
+  .paginationBox li.active + li:not(:last-child),
+  .paginationBox li.active + li + li:not(:last-child),
+  .paginationBox li.active - li:not(:first-child),
+  .paginationBox li.active - li - li:not(:first-child) {
+    display: flex;
+  }
+}

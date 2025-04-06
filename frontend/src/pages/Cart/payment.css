@@ -1,0 +1,129 @@
+.payment-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  padding: 2rem;
+}
+
+.payment-card {
+  width: 100%;
+  max-width: 500px;
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.payment-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
+  font-weight: 600 !important;
+}
+
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.input-label {
+  color: #555;
+  font-weight: 500 !important;
+}
+
+.stripe-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  transition: border-color 0.3s;
+}
+
+.stripe-input-container:focus-within {
+  border-color: #3a7bd5;
+  box-shadow: 0 0 0 2px rgba(58, 123, 213, 0.2);
+}
+
+.input-icon {
+  color: #777;
+  margin-right: 0.8rem;
+}
+
+.stripe-input {
+  flex: 1;
+  padding: 0.5rem 0;
+}
+
+.amount-display {
+  text-align: center;
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.pay-button {
+  padding: 0.8rem !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  background: linear-gradient(45deg, #3a7bd5 0%, #00d2ff 100%) !important;
+  border-radius: 8px !important;
+  text-transform: none !important;
+  margin-top: 1rem !important;
+}
+
+.pay-button:hover {
+  background: linear-gradient(45deg, #3a7bd5 0%, #00a8ff 100%) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pay-button:disabled {
+  background: #e0e0e0 !important;
+  color: #9e9e9e !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .payment-container {
+    padding: 1rem;
+  }
+
+  .payment-card {
+    padding: 1.5rem;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .payment-title {
+    font-size: 1.5rem !important;
+  }
+
+  .amount-display {
+    font-size: 1.1rem !important;
+  }
+}
+
+.stripe-input {
+  margin-left: 30px;
+}

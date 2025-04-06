@@ -1,0 +1,98 @@
+.productListContainer {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.productListHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+#productListHeading {
+  font: 500 2rem "Roboto";
+  color: rgba(0, 0, 0, 0.8);
+  margin: 0;
+}
+
+.addProductBtn {
+  font: 500 1rem "Roboto";
+  padding: 0.6rem 1.5rem;
+}
+
+.dataGridWrapper {
+  flex: 1;
+  width: 100%;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+}
+
+.productListTable {
+  border: none !important;
+}
+
+.productListTable .MuiDataGrid-columnHeaders {
+  background-color: #3f51b5;
+  color: white;
+  font-weight: 600;
+}
+
+.productListTable .MuiDataGrid-cell {
+  border-bottom: 1px solid rgba(224, 224, 224, 0.5);
+}
+
+.productListTable .MuiDataGrid-cellContent {
+  font: 400 0.9rem "Roboto";
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.productListTable .MuiIconButton-root {
+  padding: 8px;
+}
+
+.productListTable .MuiIconButton-root:hover {
+  background-color: rgba(63, 81, 181, 0.08);
+}
+
+@media screen and (max-width: 768px) {
+  .productListContainer {
+    padding: 10px;
+  }
+
+  #productListHeading {
+    font-size: 1.5rem;
+  }
+
+  .productListTable .MuiDataGrid-cellContent {
+    font-size: 0.8rem;
+  }
+
+  .productListHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #productListHeading {
+    font-size: 1.3rem;
+  }
+
+  .productListTable .MuiDataGrid-cellContent {
+    font-size: 0.7rem;
+  }
+
+  .productListTable .MuiIconButton-root {
+    padding: 4px;
+  }
+}
