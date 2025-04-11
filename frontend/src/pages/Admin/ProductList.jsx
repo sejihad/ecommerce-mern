@@ -20,7 +20,10 @@ const ProductList = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { error, products } = useSelector((state) => state.products || {});
+  const { error, products } = useSelector((state) => {
+    return state.products || {};
+  });
+
   const { error: deleteError, isDeleted } = useSelector(
     (state) => state.product || {}
   );
@@ -72,8 +75,7 @@ const ProductList = () => {
       flex: 0.5,
       headerAlign: "center",
       align: "center",
-      valueFormatter: (params) =>
-        params.value ? `$${params.value.toFixed(2)}` : "$0.00",
+      renderCell: (params) => `$${params.value}`,
     },
     {
       field: "actions",
@@ -109,12 +111,14 @@ const ProductList = () => {
   ];
 
   const rows =
-    products?.map((item) => ({
-      id: item?._id,
-      stock: item?.Stock,
-      price: item?.price,
-      name: item?.name,
-    })) || [];
+    products?.map((item) => {
+      return {
+        id: item?._id,
+        stock: item?.Stock,
+        price: item?.price, // Ensure price is a valid number
+        name: item?.name,
+      };
+    }) || [];
 
   return (
     <>

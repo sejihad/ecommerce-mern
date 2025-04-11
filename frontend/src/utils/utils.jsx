@@ -1,1 +1,1 @@
-export const API_URL = "https://ecommerce-mern-api.vercel.app";
+export const API_URL = "https://ecommerce-mern-ui.vercel.app";

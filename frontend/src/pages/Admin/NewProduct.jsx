@@ -57,35 +57,38 @@ const NewProduct = () => {
     e.preventDefault();
 
     const myForm = new FormData();
-
     myForm.set("name", name);
-    myForm.set("price", price);
+    myForm.set("price", parseFloat(price));
     myForm.set("description", description);
     myForm.set("category", category);
-    myForm.set("Stock", Stock);
+    myForm.set("Stock", parseInt(Stock, 10));
 
     images.forEach((image) => {
       myForm.append("images", image);
     });
+
     dispatch(createProduct(myForm));
   };
 
   const createProductImagesChange = (e) => {
     const files = Array.from(e.target.files);
 
-    setImages([]);
+    files.forEach((file) => {
+      if (!file.type.startsWith("image/")) {
+        return toast.error("Only image files are allowed!");
+      }
+    });
+
+    setImages((prevImages) => [...prevImages, ...files]);
     setImagesPreview([]);
 
     files.forEach((file) => {
       const reader = new FileReader();
-
       reader.onload = () => {
         if (reader.readyState === 2) {
           setImagesPreview((old) => [...old, reader.result]);
-          setImages((old) => [...old, reader.result]);
         }
       };
-
       reader.readAsDataURL(file);
     });
   };
@@ -120,8 +123,7 @@ const NewProduct = () => {
                 type="number"
                 placeholder="Price"
                 required
-                min="0"
-                onChange={(e) => setPrice(e.target.value)}
+                onChange={(e) => setPrice(Number(e.target.value))}
               />
             </div>
 
@@ -157,15 +159,14 @@ const NewProduct = () => {
                 type="number"
                 placeholder="Stock"
                 required
-                min="0"
-                onChange={(e) => setStock(e.target.value)}
+                onChange={(e) => setStock(Number(e.target.value))}
               />
             </div>
 
             <div id="createProductFormFile">
               <input
                 type="file"
-                name="avatar"
+                name="images"
                 accept="image/*"
                 onChange={createProductImagesChange}
                 multiple

@@ -1,3 +1,5 @@
+const dotenv = require("dotenv");
+dotenv.config();
 const ErrorHandler = require("../utils/errorHandler");
 const catchAsyncErros = require("../middleware/catchAsyncErros");
 const User = require("../models/userModel");
@@ -5,8 +7,6 @@ const sendToken = require("../utils/jwtToken");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
 const cloudinary = require("cloudinary");
-const dotenv = require("dotenv");
-dotenv.config();
 
 // register user
 const registerUser = catchAsyncErros(async (req, res, next) => {

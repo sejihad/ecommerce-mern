@@ -98,16 +98,17 @@ const UpdateProduct = () => {
 
   const updateProductImagesChange = (e) => {
     const files = Array.from(e.target.files);
-    setImages([]);
-    setImagesPreview([]);
-    setOldImages([]);
+
+    setImages([]); // নতুন ইমেজ সেট করব
+    setImagesPreview([]); // UI তে নতুন ইমেজ দেখানোর জন্য
+    setOldImages([]); // আগের ইমেজ রিসেট করব
 
     files.forEach((file) => {
       const reader = new FileReader();
       reader.onload = () => {
         if (reader.readyState === 2) {
-          setImagesPreview((old) => [...old, reader.result]);
-          setImages((old) => [...old, file]);
+          setImagesPreview((old) => [...old, reader.result]); // UI তে দেখানোর জন্য
+          setImages((old) => [...old, file]); // ফর্ম ডাটার জন্য
         }
       };
       reader.readAsDataURL(file);

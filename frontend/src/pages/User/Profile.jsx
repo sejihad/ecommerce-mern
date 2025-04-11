@@ -5,7 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 import Loader from "../../component/layout/Loader/Loader";
 import MetaData from "../../component/layout/MetaData";
 import "./Profile.css";
-
 const Profile = () => {
   const { user, loading, isAuthenticated } = useSelector((state) => state.user);
   const navigate = useNavigate();
@@ -15,9 +14,9 @@ const Profile = () => {
       navigate("/login");
     }
   }, [navigate, isAuthenticated]);
-
-  if (loading) return <Loader />;
-
+  if (loading) {
+    return <Loader />;
+  }
   return (
     <>
       <MetaData title={`${user.name}'s Profile`} />

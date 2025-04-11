@@ -7,27 +7,41 @@ const cloudinary = require("cloudinary");
 const createProduct = catchAsyncErrors(async (req, res, next) => {
   let images = [];
 
-  if (typeof req.body.images === "string") {
-    images.push(req.body.images);
-  } else {
-    images = req.body.images;
+  if (!req.files || !req.files.images) {
+    return res.status(400).json({
+      success: false,
+      message: "No images received",
+    });
   }
+
+  const files = Array.isArray(req.files.images)
+    ? req.files.images
+    : [req.files.images];
 
   const imagesLinks = [];
 
-  for (let i = 0; i < images.length; i++) {
-    const result = await cloudinary.v2.uploader.upload(images[i], {
-      folder: "products",
-    });
+  for (let file of files) {
+    try {
+      const result = await cloudinary.uploader.upload(
+        `data:${file.mimetype};base64,${file.data.toString("base64")}`,
+        { folder: "products" }
+      );
 
-    imagesLinks.push({
-      public_id: result.public_id,
-      url: result.secure_url,
-    });
+      console.log("Cloudinary Upload Result:", result);
+      imagesLinks.push({
+        public_id: result.public_id,
+        url: result.secure_url,
+      });
+    } catch (error) {
+      console.error("Cloudinary Upload Error:", error);
+      return res
+        .status(500)
+        .json({ success: false, message: "Image upload failed" });
+    }
   }
 
   req.body.images = imagesLinks;
-  req.body.user = req.user.id;
+  req.body.user = req.user?.id || "Unknown User";
 
   const product = await Product.create(req.body);
 
@@ -79,37 +93,49 @@ const updateProduct = catchAsyncErrors(async (req, res, next) => {
   if (!product) {
     return next(new ErrorHandler("Product not found", 404));
   }
-  // Images Start Here
-  let images = [];
 
-  if (typeof req.body.images === "string") {
-    images.push(req.body.images);
-  } else {
-    images = req.body.images;
-  }
-
-  if (images !== undefined) {
-    // Deleting Images From Cloudinary
-    for (let i = 0; i < product.images.length; i++) {
-      await cloudinary.v2.uploader.destroy(product.images[i].public_id);
+  // ✅ Step 1: Check if new images are uploaded
+  if (req.files && req.files.images) {
+    // ✅ Delete Old Images from Cloudinary
+    if (product.images && product.images.length > 0) {
+      for (let img of product.images) {
+        try {
+          await cloudinary.uploader.destroy(img.public_id);
+        } catch (error) {
+          console.error("Cloudinary Deletion Error:", error);
+        }
+      }
     }
 
+    // ✅ Convert New Images to Base64 and Upload
     const imagesLinks = [];
+    const files = Array.isArray(req.files.images)
+      ? req.files.images
+      : [req.files.images];
 
-    for (let i = 0; i < images.length; i++) {
-      const result = await cloudinary.v2.uploader.upload(images[i], {
-        folder: "products",
-      });
+    for (let file of files) {
+      try {
+        const result = await cloudinary.uploader.upload(
+          `data:${file.mimetype};base64,${file.data.toString("base64")}`,
+          { folder: "products" }
+        );
 
-      imagesLinks.push({
-        public_id: result.public_id,
-        url: result.secure_url,
-      });
+        imagesLinks.push({
+          public_id: result.public_id,
+          url: result.secure_url,
+        });
+      } catch (error) {
+        console.error("Cloudinary Upload Error:", error);
+        return res
+          .status(500)
+          .json({ success: false, message: "Image upload failed" });
+      }
     }
 
     req.body.images = imagesLinks;
   }
 
+  // ✅ Update Product Data
   product = await Product.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,

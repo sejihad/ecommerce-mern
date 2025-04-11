@@ -105,29 +105,35 @@ export const getAdminProduct = () => async (dispatch) => {
 // Create Product
 export const createProduct = (productData) => async (dispatch) => {
   try {
+    // Dispatching NEW_PRODUCT_REQUEST action to show loading
     dispatch({ type: NEW_PRODUCT_REQUEST });
+
     const token = localStorage.getItem("token");
+
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "multipart/form-data", // Make sure to add content-type if it's multipart form-data
         Authorization: `Bearer ${token}`,
       },
     };
 
+    // Sending POST request
     const { data } = await axios.post(
       `${API_URL}/api/v1/admin/product/new`,
       productData,
       config
     );
 
+    // Dispatch success action with the response data
     dispatch({
       type: NEW_PRODUCT_SUCCESS,
       payload: data,
     });
   } catch (error) {
+    // Dispatching failure action with error message
     dispatch({
       type: NEW_PRODUCT_FAIL,
-      payload: error.response.data.message,
+      payload: error.response?.data?.message || "Something went wrong!",
     });
   }
 };
@@ -139,7 +145,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
     const token = localStorage.getItem("token");
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "multipart/form-data",
         Authorization: `Bearer ${token}`,
       },
     };
