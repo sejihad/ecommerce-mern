@@ -72,19 +72,6 @@ function App() {
       <Header />
 
       <Routes>
-        <Route
-          path="/process/payment"
-          element={
-            <ProtectedRoute>
-              {stripeApiKey && (
-                <Elements stripe={loadStripe(stripeApiKey)}>
-                  <Payment />
-                </Elements>
-              )}
-            </ProtectedRoute>
-          }
-        />
-
         <Route path="/" element={<Home />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/products" element={<Products />} />
@@ -99,7 +86,18 @@ function App() {
         {/* error page */}
         <Route path="*" element={<Notfound />} />
         {/* Protected User Route */}
-
+        <Route
+          path="/process/payment"
+          element={
+            <ProtectedRoute>
+              {stripeApiKey && (
+                <Elements stripe={loadStripe(stripeApiKey)}>
+                  <Payment />
+                </Elements>
+              )}
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/account"
           element={
