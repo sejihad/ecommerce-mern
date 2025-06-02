@@ -1,4 +1,3 @@
-import { composeWithDevTools } from "@redux-devtools/extension";
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // LocalStorage use korar jonno
@@ -75,7 +74,8 @@ const middleware = [thunk];
 const store = createStore(
   persistedReducer,
   initialState,
-  composeWithDevTools(applyMiddleware(...middleware))
+  applyMiddleware(...middleware)
+  // composeWithDevTools(applyMiddleware(...middleware))
 );
 
 // Persistor
